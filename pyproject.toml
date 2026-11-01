@@ -15,6 +15,7 @@ dependencies = [
   "mcp>=2.1.0",
   "httpx>=0.28.0",
   "pydantic>=2.13.0",
+  "uvicorn",
 ]
 
 [project.optional-dependencies]
