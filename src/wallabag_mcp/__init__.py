@@ -39,7 +39,7 @@ def main() -> None:
         timeout=float(os.environ.get("WALLABAG_TIMEOUT", "20")),
     )
 
-    uvicorn.run(mcp.streamable_http_app(), host="localhost", port=8089, log_level=log_level.lower(), access_logs=True)
+    uvicorn.run(mcp.streamable_http_app(), host="localhost", port=8089, log_level="info", access_logs=True)
 
 
 __all__ = ["__version__", "main", "mcp"]
