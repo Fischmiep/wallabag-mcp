@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import sys
+import uvicorn
 from importlib.metadata import PackageNotFoundError, version
 
 from mcp.server.mcpserver import MCPServer
@@ -37,7 +38,8 @@ def main() -> None:
         refresh_token=os.environ.get("WALLABAG_REFRESH_TOKEN"),
         timeout=float(os.environ.get("WALLABAG_TIMEOUT", "20")),
     )
-    mcp.run(transport="stdio")
+
+    uvicorn.run(mcp.streamable_http_app(), host="localhost", port=8089, log_level=log_level.lower(), access_logs=True)
 
 
 __all__ = ["__version__", "main", "mcp"]
